@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frame Editor Demo using Fabric.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Frame Editor Demo</h1>
+    <p>A simple yet powerful demo built with <strong>Fabric.js</strong> for creating and adjusting framed photos.</p>
+  </header>
+
+  <main>
+    <section class="workspace">
+      <div class="canvas-wrapper">
+        <canvas id="canvas" width="800" height="600"></canvas>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <button class="btn primary" onclick="addFrame(event)">Add Frame</button>
+      <button class="btn secondary" onclick="addImage(event)">Add Photo</button>
+      <button class="btn success" onclick="adjustImage()">Adjust Photo</button>
+      <button class="btn warning" onclick="moveFrame()">Move Frame</button>
+      <button class="btn danger" onclick="resetCanvas()">Reset</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Frame Editor Demo using <a href="https://fabricjs.com/" target="_blank">Fabric.js</a> © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

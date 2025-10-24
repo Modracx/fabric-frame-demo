@@ -1,0 +1,149 @@
+/* ---------- Base Styles ---------- */
+:root {
+  --primary: #2563eb;
+  --secondary: #475569;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --bg: #f9fafb;
+  --text: #1e293b;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(120deg, var(--primary), #1d4ed8);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+header p {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+
+/* ---------- Canvas Area ---------- */
+.workspace {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 1rem;
+}
+
+.canvas-wrapper {
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+}
+
+canvas {
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  /* background-color: #fff; */
+}
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Button Colors ---------- */
+.primary {
+  background-color: var(--primary);
+}
+.secondary {
+  background-color: var(--secondary);
+}
+.success {
+  background-color: var(--success);
+}
+.warning {
+  background-color: var(--warning);
+}
+.danger {
+  background-color: var(--danger);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  canvas {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+}
