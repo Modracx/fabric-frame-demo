@@ -21,8 +21,3 @@ Users can load SVG frames, add images inside them, move or scale both independen
 - **HTML5 Canvas** – Rendering surface  
 - **JavaScript (ES6)** – Core interaction logic  
 - **CSS3** – Modern, responsive styling  
-
----
-
-## Project Structure
-
