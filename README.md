@@ -7,8 +7,7 @@ Users can load SVG frames, add images inside them, move or scale both independen
 
 ## Features
 
-- **Add Frame** – Load an SVG frame onto the canvas  
-- **Add Photo** – Place an image inside the frame  
+- **Create Frame** – Place an image inside the frame to create frame object  
 - **Move Frame** – Move or rotate the frame and image as a group  
 - **Adjust Photo** – Separate and fine-tune the photo inside the frame  
 - **Reset** – Clear the canvas and start fresh  
