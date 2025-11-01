@@ -1,46 +1,23 @@
+/*!
+ * frame demo for fabric.js
+ * Kenneth D'silva (Modracx), Copyright (c) June 2025
+ * Licensed under the MIT License – https://opensource.org/licenses/MIT
+ */
 // FRAME EDITOR DEMO USING FABRIC.JS
 const canvas = new fabric.Canvas("canvas");
 let frameData, imageData, group;
 let isGrouped = false;
-
-// ---------------- ADD FRAME ----------------
-function addFrame(e) {
-  const btn = e.target;
-  btn.disabled = true;
-
-  fabric.loadSVGFromURL("frame.svg", (objects, options) => {
-    const frame = fabric.util.groupSVGElements(objects, options);
-    frame.set({
-      left: 100,
-      top: 100,
-      scaleX: 1,
-      scaleY: 1,
-      borderColor: "#2563eb",
-      cornerColor: "#2563eb",
-      cornerSize: 10,
-      transparentCorners: false,
-      selectable: true,
-      id: "frame",
-    });
-    frameData = frame;
-    canvas.add(frameData);
-  });
-}
 
 // ---------------- ADD IMAGE ----------------
 function addImage(e) {
   const btn = e.target;
   btn.disabled = true;
 
-  canvas.remove(frameData);
-
   fabric.Image.fromURL("photo.jpg", (img) => {
     fabric.loadSVGFromURL("frame.svg", (objects, options) => {
       const frame = fabric.util.groupSVGElements(objects, options);
       frame.set({
         fill: "",
-        stroke: "#2563eb",
-        strokeWidth: 1.5,
         left: 100,
         top: 100,
         scaleX: 1,
@@ -81,6 +58,7 @@ function addImage(e) {
         frame.on("moving", () => syncClip(frame, clipPath, img));
         frame.on("rotating", () => syncClip(frame, clipPath, img, "rotate"));
         frame.on("scaling", () => syncClip(frame, clipPath, img, "scale"));
+        moveFrame();
       });
     });
   });
@@ -110,7 +88,14 @@ function adjustImage() {
       if (item.id === "frame") frameData = item;
     });
 
+    console.log(frameData)
+    console.log(imageData)
+
     group = null;
+    frameData.fill = '';
+    frameData.selectable = false;
+    frameData.absolutePositioned = true;
+    imageData.clipPath = frameData;
     canvas.add(frameData, imageData);
   }
 }
@@ -120,8 +105,7 @@ function moveFrame() {
   if (!isGrouped) {
     isGrouped = true;
     canvas.clear();
-    // imageData.clipPath = null;
-
+    frameData.absolutePositioned = false;
     group = new fabric.Group([imageData, frameData], {
       borderColor: "#2563eb",
       cornerColor: "#2563eb",
@@ -129,8 +113,10 @@ function moveFrame() {
       transparentCorners: false,
       hasControls: true,
       selectable: true,
+      clipPath: frameData,
     });
 
+    console.log(group);
     canvas.add(group);
   }
 }
