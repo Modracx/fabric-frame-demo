@@ -105,6 +105,7 @@ function moveFrame() {
   if (!isGrouped) {
     isGrouped = true;
     canvas.clear();
+    imageData.clipPath = null;
     frameData.absolutePositioned = false;
     group = new fabric.Group([imageData, frameData], {
       borderColor: "#2563eb",
