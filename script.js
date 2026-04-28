@@ -107,7 +107,12 @@ function moveFrame() {
     canvas.clear();
     imageData.clipPath = null;
     frameData.absolutePositioned = false;
-    group = new fabric.Group([imageData, frameData], {
+    // Capture image's canvas center before grouping modifies it
+    const imageCenter = imageData.getCenterPoint();
+
+    // Build the group from the frame only so Fabric derives the bounding box
+    // directly from the frame — no manual width/height needed
+    group = new fabric.Group([frameData], {
       borderColor: "#2563eb",
       cornerColor: "#2563eb",
       cornerSize: 10,
@@ -116,6 +121,17 @@ function moveFrame() {
       selectable: true,
       clipPath: frameData,
     });
+
+    // Place imageData in the group at the correct group-local position
+    const groupCenter = group.getCenterPoint();
+    imageData.set({
+      originX: "center",
+      originY: "center",
+      left: imageCenter.x - groupCenter.x,
+      top: imageCenter.y - groupCenter.y,
+    });
+    group._objects.unshift(imageData);
+    imageData.group = group;
 
     console.log(group);
     canvas.add(group);
